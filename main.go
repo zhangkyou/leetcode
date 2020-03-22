@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	"Goproject/interview/changting"
 	"Goproject/leetcode/List"
 	"Goproject/leetcode/array"
 	"Goproject/leetcode/backtrace"
@@ -15,12 +14,12 @@ import (
 	"Goproject/leetcode/dp"
 	"Goproject/leetcode/packagetest"
 	"Goproject/leetcode/queue"
+	"Goproject/leetcode/redundent"
 	"Goproject/leetcode/reverse"
 	"Goproject/leetcode/roman"
 	"Goproject/leetcode/stack"
 	"Goproject/leetcode/stock"
 	"Goproject/leetcode/twosum"
-	"Goproject/leetcode/redundent"
 )
 
 func main() {
@@ -78,7 +77,9 @@ func main() {
 	//countCharacters()
 	//maxPackageValue()
 	//longestPalindrome()
-	getLeastNumbers()
+	//getLeastNumbers()
+	//canMeasureWater()
+	compressString()
 }
 
 func set(a []int) {
@@ -339,61 +340,6 @@ func lruCache() {
 	//cache2.Print()
 }
 
-func frequency() {
-	input := []int{1564900000,
-		1564900005,
-		1564900008,
-		1564900007,
-		1564900009}
-
-	changting.Constructor(input)
-	fmt.Println(changting.Frequency(0, 9999999999))
-	fmt.Println(changting.Frequency(1564900008, 1564900008))
-	fmt.Println(changting.Frequency(1564900006, 1564900006))
-	fmt.Println(changting.Frequency(1564900007, 1564900009))
-	fmt.Println(changting.Frequency(1564900000, 1564900007))
-}
-
-func drink() {
-	q := []int{1,1,1,1}
-	m := 2
-	fmt.Println(changting.Drink(q, m))
-}
-
-func arraySum() {
-	//q := []int{3,1,2,3,1}
-	//q := []int{1,1,1,1,1,2,2}
-	q := []int{2,2,2,1,2,2,2,1,1}
-	fmt.Println(changting.ArraySum(q))
-}
-
-func decode() {
-	e := 3
-	c := 123612763
-	fmt.Println(changting.Decode(e, c))
-}
-
-/**
-	input:
-	100 100
-	1 2 1000
-	equivalent a two-dimensional array
-	[
-		[100, 1000],
-		[0, 100],
-	]
- */
-func minFee() {
-	cooperation := [][]int{{100,1000}, {0,100}}
-	fmt.Println(changting.MinFee(cooperation))
-}
-
-func practise() {
-	ids := []int{2,3,4}
-	graph := [][]int{{0,1,1,1},{0,0,0,0},{0,0,0,0}}
-	fmt.Println(changting.Practise(ids, graph))
-}
-
 func countCharacters() {
 	//words := []string{"cat","bt","hat","tree"}
 	//chars := "atach"
@@ -418,4 +364,16 @@ func getLeastNumbers() {
 	arr := []int{4,5,1,6,2,7,3,8}
 	k := 4
 	fmt.Println(array.QuickSort(arr, k))
+}
+
+func canMeasureWater() {
+	x := 2
+	y := 6
+	z := 5
+	fmt.Println(daily.CanMeasureWater(x, y, z))
+}
+
+func compressString() {
+	S := "abbccdKKKK"
+	fmt.Println(daily.CompressString(S))
 }
