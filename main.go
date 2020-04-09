@@ -1,14 +1,25 @@
 package main
 
 import (
+	"Goproject/alibaba"
+	"Goproject/leetcode/cache/LFU"
+	"Goproject/leetcode/daily/april"
+	"Goproject/leetcode/evenweekly"
+	"Goproject/leetcode/index"
+	"Goproject/leetcode/kmp"
+	"Goproject/leetcode/stdsort"
+	"Goproject/leetcode/weekly"
+	"Goproject/tecent"
+	"context"
 	"fmt"
 	"os"
+	"time"
 
 	"Goproject/leetcode/List"
 	"Goproject/leetcode/array"
 	"Goproject/leetcode/backtrace"
 	"Goproject/leetcode/binary"
-	cache2 "Goproject/leetcode/cache"
+	cache2 "Goproject/leetcode/cache/LRU"
 	"Goproject/leetcode/commonstring"
 	"Goproject/leetcode/daily"
 	"Goproject/leetcode/dp"
@@ -79,7 +90,36 @@ func main() {
 	//longestPalindrome()
 	//getLeastNumbers()
 	//canMeasureWater()
-	compressString()
+	//compressString()
+	//massage()
+	//SurfaceArea()
+	//numRookCaptures()
+	//hasGroupsSizeX()
+	//trieTree()
+	//minimumLengthEncoding()
+	//minIncrementForUnique()
+	//findLucky()
+	//numTeams()
+	//undergroundSystem()
+	//escapeZero()
+	//stdSort()
+	//kmpTest()
+	//oneCount()
+	//pathNum()
+	//maxDepthAfterSplit()
+	//gameOfLife()
+	//myAtoi()
+	//trap()
+	//countLargestGroup()
+	//canConstruct()
+	//checkOverlap()
+	//maxSatisfaction()
+	//minSubsequence()
+	//NumSteps()
+	//stoneGame()
+	//lfu()
+	//rotate()
+	movingCount()
 }
 
 func set(a []int) {
@@ -376,4 +416,239 @@ func canMeasureWater() {
 func compressString() {
 	S := "abbccdKKKK"
 	fmt.Println(daily.CompressString(S))
+}
+
+func massage() {
+	nums := []int{2,1,4,5,3,1,1,3}
+	fmt.Println(dp.Massage(nums))
+}
+
+func SurfaceArea() {
+	input := [][]int{{1,1,1}, {1,0,1},{1,1,1}}
+	fmt.Println(daily.SurfaceArea(input))
+}
+
+func numRookCaptures() {
+	ctx, _ := context.WithTimeout(context.Background(), 2 * time.Second)
+	select{
+	case <-ctx.Done():
+		//doSometing
+	}
+
+	ch := make(chan int)
+	t := time.After(5 * time.Second)
+	select {
+	case <-t:
+		close(ch)
+	}
+	input := [][]byte{{'.','.','.','.','.','.','.','.'},
+					{'.','.','.','p','.','.','.','.'},
+					{'.','.','.','p','.','.','.','.'},
+					{'p','p','.','R','.','p','B','.'},
+					{'.','.','.','.','.','.','.','.'},
+					{'.','.','.','B','.','.','.','.'},
+					{'.','.','.','p','.','.','.','.'},
+					{'.','.','.','.','.','.','.','.'}}
+	fmt.Println(daily.NumRookCaptures(input))
+}
+
+func hasGroupsSizeX() {
+	input := []int{1,2,3}
+	fmt.Println(daily.HasGroupsSizeX(input))
+}
+
+func trieTree() {
+	trie := index.Constructor()
+
+	trie.Insert("apple")
+	fmt.Println(trie.Search("apple")) // 返回 true
+	fmt.Println(trie.Search("app"))   // 返回 false
+	fmt.Println(trie.StartsWith("app")) // 返回 true
+	trie.Insert("app")
+	fmt.Println(trie.Search("app"))     // 返回 true
+	fmt.Println(trie.ExactlyStartsWith("apple")) // 返回 true
+}
+
+func minimumLengthEncoding() {
+	words := []string{"time", "me", "bell"}
+	fmt.Println(daily.MinimumLengthEncoding(words))
+}
+
+func minIncrementForUnique() {
+	input := []int{3,2,1,2,1,7}
+	fmt.Println(daily.MinIncrementForUnique(input))
+}
+
+func findLucky() {
+	arr := []int{7,7,7,7,7,7,7}
+	fmt.Println(weekly.FindLucky(arr))
+}
+
+func numTeams() {
+	arr := []int{1,2,3,4}
+	fmt.Println(weekly.NumTeams(arr))
+}
+
+func undergroundSystem() {
+	undergroundSystem := weekly.Constructor();
+	undergroundSystem.CheckIn(334530, "40R0G6EM", 27)
+	undergroundSystem.CheckOut(334530, "40R0G6EM", 30)
+	undergroundSystem.CheckIn(568697, "IESH9C88", 99)
+	undergroundSystem.CheckOut(568697, "YFGL6BD9", 185)
+	undergroundSystem.CheckIn(228445, "TFU233RE", 200)
+	undergroundSystem.CheckOut(228445, "03RA2AIV", 245)
+	undergroundSystem.CheckIn(931420, "E5DR624I", 254)
+	undergroundSystem.CheckOut(931420, "AKXE2R5P", 255)
+	fmt.Println(undergroundSystem.GetAverageTime("IESH9C88", "YFGL6BD9"))
+	undergroundSystem.CheckIn(579295, "3V2KP8CY", 355)
+	undergroundSystem.CheckIn(350549, "IESH9C88", 428)
+	fmt.Println(undergroundSystem.GetAverageTime("40R0G6EM", "D4MEVFON"))
+	fmt.Println(undergroundSystem.GetAverageTime("TFU233RE", "03RA2AIV"))
+	undergroundSystem.CheckOut(579295, "16W1KJWQ", 488)
+	undergroundSystem.CheckOut(350549, "YFGL6BD9", 491)
+	fmt.Println(undergroundSystem.GetAverageTime("TFU233RE", "03RA2AIV"))
+	undergroundSystem.CheckIn(670740, "IUTXOOZE", 576)
+	undergroundSystem.CheckIn(721153, "CEIKSL9H", 643)
+	undergroundSystem.CheckIn(590057, "HSI0KVF2", 664)
+	fmt.Println(undergroundSystem.GetAverageTime("TFU233RE", "03RA2AIV"))
+	fmt.Println(undergroundSystem.GetAverageTime("3V2KP8CY", "16W1KJWQ"))
+	fmt.Println(undergroundSystem.GetAverageTime("E5DR624I", "AKXE2R5P"))
+	undergroundSystem.CheckOut(590057, "IG3AUY9H", 673)
+	undergroundSystem.CheckIn(722875, "IESH9C88", 767)
+	fmt.Println(undergroundSystem.GetAverageTime("E5DR624I", "AKXE2R5P"))
+	fmt.Println(undergroundSystem.GetAverageTime("E5DR624I", "AKXE2R5P"))
+	fmt.Println(undergroundSystem.GetAverageTime("3V2KP8CY", "16W1KJWQ"))
+	undergroundSystem.CheckIn(480231, "M2VQ1GJG", 813)
+	fmt.Println(undergroundSystem.GetAverageTime("IESH9C88", "YFGL6BD9"))
+	fmt.Println(undergroundSystem.GetAverageTime("3V2KP8CY", "16W1KJWQ"))
+	fmt.Println(undergroundSystem.GetAverageTime("TFU233RE", "03RA2AIV"))
+}
+
+func escapeZero() {
+	//input := [][]int{{0,0,0,0,0},{0,1,1,1,0},{1,0,0,0,1},{0,1,1,0,0},{0,0,0,0,0}}
+	//input := [][]int{{1,1,1,1,1},{0,0,0,0,1},{0,0,0,0,1}}
+	//input := [][]int{{1,1,1,1,0},{0,0,1,1,0},{0,0,0,1,1}}
+	input := [][]int{{1,1},{1,1}}
+	//input := [][]int{{0,1,0},{1,0,1},{0,1,0}}
+	fmt.Println(alibaba.EscapeZero(input))
+}
+
+func stdSort() {
+	input := []int{5,1,1,2,0,0}
+	fmt.Println(stdsort.QuickSort(input))
+}
+
+func kmpTest() {
+	s := "BBC ABCDAB ABCDABCDABDE"
+	p := "ABCDABD"
+	fmt.Println(kmp.KmpSearch(s, p))
+}
+
+func oneCount() {
+	m := 111
+	n := 112
+	fmt.Println(tecent.Count(m,n))
+}
+
+func pathNum() {
+	input := [][]byte{{'S','o', 'o', 'o', 'o'},
+		{'o','x', 'o', 'x', 'o'},
+		{'o','o', 'o', 'o', 'x'},
+		{'o','o', 'o', 'o', 'E'}}
+	fmt.Println(alibaba.PathNumDP(input))
+}
+
+func maxDepthAfterSplit() {
+	s := "()(())()"
+	fmt.Println(daily.MaxDepthAfterSplit(s))
+}
+
+func gameOfLife() {
+	input := [][]int{{0,1,0},{0,0,1},{1,1,1},{0,0,0}}
+	april.GameOfLife(input)
+	fmt.Println(input)
+}
+
+func myAtoi() {
+	//s := "-91283472332"
+	s := "9223372036854775808"
+	//s := "-2147483648"
+	fmt.Println(april.MyAtoi(s))
+}
+
+func trap() {
+	input := []int{0,1,0,2,1,0,1,3,2,1,2,1}
+	fmt.Println(april.TrapOptimize(input))
+}
+
+func countLargestGroup() {
+	n := 24
+	fmt.Println(evenweekly.CountLargestGroup(n))
+}
+
+func canConstruct() {
+	s := "yzyzyzyzyzyzyzy"
+	k := 2
+	fmt.Println(evenweekly.CanConstruct(s, k))
+}
+
+func checkOverlap() {
+	radius := 1415
+	x_center := 807
+	y_center := -784
+	x1 := -733
+	y1 := 623
+	x2 := -533
+	y2 := 1005
+	fmt.Println(evenweekly.CheckOverlap(radius, x_center, y_center, x1, y1, x2, y2))
+}
+
+func maxSatisfaction() {
+	input := []int{-2,5,-1,0,3,-3}
+	fmt.Println(evenweekly.MaxSatisfaction(input))
+}
+
+func minSubsequence() {
+	input := []int{6}
+	fmt.Println(weekly.MinSubsequence(input))
+}
+
+func NumSteps() {
+	s := "10"
+	fmt.Println(weekly.NumSteps(s))
+}
+
+func stoneGame() {
+	input := []int{5,3,4,5}
+	fmt.Println(dp.StoneGame(input))
+}
+
+func lfu() {
+	cache := LFU.Constructor(2)
+
+	cache.Put(1,1)
+	cache.Put(2,2)
+	fmt.Println(cache.Get(1))       // 返回 1
+	cache.Put(3, 3)    // 去除 key 2
+	fmt.Println(cache.Get(2))    // 返回 -1 (未找到key 2)
+	fmt.Println(cache.Get(3))    // 返回 3
+	cache.Put(4, 4)    // 去除 key 1
+	fmt.Println(cache.Get(1))       // 返回 -1 (未找到 key 1)
+	fmt.Println(cache.Get(3))       // 返回 3
+	fmt.Println(cache.Get(4))       // 返回 4
+
+	//cache := LFU.Constructor(0)
+	//cache.Put(0,0)
+	//fmt.Println(cache.Get(0))
+}
+
+func rotate() {
+	input := [][]int{{5, 1, 9,11},{2, 4, 8,10},{13, 3, 6, 7},{15,14,12,16}}
+	april.RotateOptimize(input)
+	fmt.Println(input)
+}
+
+func movingCount() {
+	m, n, k := 38,15,9
+	fmt.Println(april.MovingCount(m, n, k))
 }

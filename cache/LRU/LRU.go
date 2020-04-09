@@ -1,4 +1,4 @@
-package cache
+package LRU
 
 import (
 	"fmt"
@@ -68,7 +68,7 @@ func (this *LRUCache) Put(key int, value int) error {
 			addNode(cur)
 			this.m[key] = cur
 		} else {
-			cur := &ListNode{key, value, nil, nil}
+			//cur := &ListNode{key, value, nil, nil}
 			delete(this.m, tail.Pre.Key)
 			removeNode(tail.Pre)
 			addNode(cur)
